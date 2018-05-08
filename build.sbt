@@ -1,4 +1,4 @@
-organization := "org.eintr.loglady"
+organization := "com.github.seanroy"
 
 name := "loglady"
 
@@ -8,15 +8,16 @@ description := "Crazy simple logging API for Scala."
 
 licenses := Seq("Apache License, Version 2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0.txt"))
 
-scalaVersion := "2.9.2"
+scalaVersion := "2.12.3"
 
-crossScalaVersions := Seq("2.9.1", "2.9.2", "2.10.0")
+crossScalaVersions := Seq("2.9.1", "2.9.2", "2.10.0", "2.12.3")
 
 libraryDependencies ++= Seq(
   "org.slf4j"      %  "slf4j-api"       % "1.7.2",
   "ch.qos.logback" %  "logback-classic" % "1.0.0" % "test",
   "junit"          %  "junit"           % "4.11"  % "test",
-  "org.specs2"     %% "specs2"          % "1.12.3" % "test"
+  "org.specs2"     %% "specs2-core"     % "4.2.0" % "test",
+  "org.specs2"     %% "specs2-junit"     % "4.2.0" % "test"
 )
 
 scalacOptions ++= Seq("-optimize", "-unchecked", "-deprecation", "-Xcheckinit", "-encoding", "utf8")
@@ -26,6 +27,7 @@ cancelable := true
 testOptions in Test += Tests.Argument("console", "junitxml")
 
 // Publishing
+useGpg := true
 
 publishMavenStyle := true
 
